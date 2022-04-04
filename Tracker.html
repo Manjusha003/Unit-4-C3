@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container >div >p{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <label for="">Select Month</label>
+        <br>
+        <input type="text" id="month">
+        <select name="" id="">
+            <option value=""></option>
+            <option value="jan">January</option>
+            <option value="feb">Februvary</option>
+            <option value="mar">March</option>
+            <option value="april">April</option>
+            <option value="may">May</option>
+            <option value="june">June</option>
+            <option value="july">July</option>
+            <option value="aug">August</option>
+            <option value="sep">September</option>
+            <option value="oct">Octomber</option>
+            <option value="nov">November</option>
+             <option value="dec">December</option>
+        </select>
+        <br>
+        <br>
+        <label for="">Income</label>
+        <br>
+        <input type="text" id="income">
+        <br>
+        <br>
+        <label for="">Expense</label>
+        <br>
+        <input type="text" id="expense">
+        <br>
+        <br>
+   <input type="submit">
+    </form>
+    <div id="container"></div>
+
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",createBox);
+var trackerData=[]
+    function createBox(){
+        event.preventDefault();
+        var trackerObj={
+    month:document.querySelector('#month').value,
+    income:document.querySelector('#income').value,
+    expense:document.querySelector('#expense').value,
+
+        };
+       trackerData.push(trackerObj);
+   trackerDataDisplay( trackerData)
+   document.querySelector("#month").value="";
+ document.querySelector('#income').value="";
+ document.querySelector("#expense").value="";
+//  document.querySelector('#saving').value="";
+
+    }
+
+    function trackerDataDisplay( trackerData){
+
+       trackerData.forEach(function(tracker){
+        var box=document.createElement('div');
+      
+        var month=document.createElement("p");
+        month.innerText=tracker.month;
+
+        var income=document.createElement("p");
+        income.innerText=tracker.income;
+
+        var expense=document.createElement("p");
+        expense.innerText=tracker.expense;
+        
+        box.append(month,income,expense);
+
+        document.querySelector('#container').append(box)
+        console.log(trakerObj)
+       })
+
+    }
+
+</script>
+</html>
